@@ -19,7 +19,7 @@ div#chart {width: 100%;}
 <div id="chart"></div>
 
 <script>
-    d3.csv("daily.csv", function(error, data) {
+    d3.csv("https://api.covidtracking.com/v1/us/daily.csv", function(error, data) {
             if (error) {
                 throw error;
             }
@@ -28,9 +28,9 @@ div#chart {width: 100%;}
 				radius = (Math.min(width, height) - 50) / 2;
             var svgPie = d3.select("#chart").append("svg")
 				.attr("width", width)
-				.attr("height", height+40)
+				.attr("height", height+150)
 				.append("g")
-				.attr("transform", "translate(" + width / 2 + "," + (height / 2 + 20) + ")");
+				.attr("transform", "translate(" + (width / 2 + 10) + "," + (height / 2 + 75) + ")");
 
     		var color = d3.scaleOrdinal(['red','orange','yellow','green','blue','purple','brown','gray','gold','cyan','silver','pink']);
 
@@ -63,7 +63,7 @@ div#chart {width: 100%;}
     			.innerRadius(0);
     	
     		var label = d3.arc()
-    			.outerRadius(radius + 20)
+    			.outerRadius(radius + 120)
 	    		.innerRadius(radius - 10);
 
             arcs.append("path")
